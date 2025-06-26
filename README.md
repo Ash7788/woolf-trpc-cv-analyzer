@@ -42,7 +42,7 @@ An AI-powered Node.js app using tRPC and Gemini 1.5 Flash to analyze a candidate
 ### Installation
 
 ```bash
-git clone <your-repo-link>
+git clone https://github.com/Ash7788/woolf-trpc-cv-analyzer.git
 cd woolf-trpc-cv-analyzer
 npm install     # or yarn install
 ```
