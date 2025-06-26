@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Evaluation Result</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    .markdown-content h1, .markdown-content h2, .markdown-content h3 {
+      font-weight: bold;
+      margin-top: 1.5em;
+      margin-bottom: 0.8em;
+    }
+    .markdown-content h1 { font-size: 2em; }
+    .markdown-content h2 { font-size: 1.5em; border-bottom: 1px solid #eee; padding-bottom: 0.3em; }
+    .markdown-content h3 { font-size: 1.25em; }
+    .markdown-content p {
+      margin-bottom: 1em;
+      line-height: 1.6;
+    }
+    .markdown-content ul, .markdown-content ol {
+      list-style-position: inside;
+      margin-left: 1.5em;
+      margin-bottom: 1em;
+    }
+    .markdown-content ul li {
+      list-style-type: disc;
+    }
+    .markdown-content ol li {
+      list-style-type: decimal;
+    }
+    .markdown-content strong {
+      font-weight: bold;
+    }
+    .markdown-content em {
+      font-style: italic;
+    }
+    .markdown-content pre {
+      background-color: #f8f8f8;
+      border: 1px solid #ddd;
+      padding: 1em;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin-bottom: 1em;
+    }
+    .markdown-content code {
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+      background-color: #eee;
+      padding: 0.2em 0.4em;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen p-6">
+  <div class="max-w-4xl mx-auto bg-white rounded-lg shadow p-8">
+    <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">AI-Powered Candidate Evaluation</h1>
+
+    <div id="ai-result-content" class="markdown-content">
+      </div>
+
+    <div class="mt-8 text-center">
+      <a href="/" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300 text-lg shadow-md">
+        ← Analyze Another Pair
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const rawMarkdown = `<%- result %>`;
+    const resultContentDiv = document.getElementById('ai-result-content');
+    resultContentDiv.innerHTML = marked.parse(rawMarkdown);
+    resultContentDiv.style.opacity = 0;
+    setTimeout(() => {
+      resultContentDiv.style.transition = 'opacity 0.5s ease-in';
+      resultContentDiv.style.opacity = 1;
+    }, 100);
+  </script>
+</body>
+</html>
