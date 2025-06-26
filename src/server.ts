@@ -5,10 +5,22 @@ import path from "path";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { appRouter } from "./trpc";
 import { promises as fs } from 'fs';
+import rateLimit from "express-rate-limit";
 
 dotenv.config();
 
 const app = express();
+
+const limiter = rateLimit({
+    windowMs: 1 * 60 * 1000,
+    max: 20,
+    message: "Too many requests from this IP, please try again in a minute.",
+    standardHeaders: true, 
+    legacyHeaders: false,
+  });
+  
+  app.use(limiter);
+
 const upload = multer({ dest: "uploads/" });
 
 app.set("view engine", "ejs");

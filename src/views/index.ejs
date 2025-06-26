@@ -8,7 +8,9 @@
 <body class="bg-gray-50 min-h-screen flex items-center justify-center px-4">
   <div class="bg-white shadow-lg rounded-xl p-8 max-w-md w-full">
     <h1 class="text-2xl font-bold mb-6 text-gray-800 text-center">Upload Resume & Job Description</h1>
-    <form action="/upload" method="POST" enctype="multipart/form-data" class="space-y-4">
+
+
+    <form id="uploadForm" action="/upload" method="POST" enctype="multipart/form-data" class="space-y-4">
       <div>
         <label class="block text-sm font-medium text-gray-700 mb-1">Resume (PDF)</label>
         <input type="file" name="cv" accept="application/pdf" required
@@ -25,11 +27,26 @@
           file:bg-green-50 file:text-green-700 hover:file:bg-green-100"/>
       </div>
 
-      <button type="submit"
-        class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition">
-        Analyze with AI
+      <button id="submitBtn" type="submit"
+        class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition flex justify-center items-center">
+        <span>Analyze with AI</span>
+        <svg id="spinner" class="animate-spin h-5 w-5 ml-2 hidden text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+        </svg>
       </button>
     </form>
   </div>
+
+  <script>
+    const form = document.getElementById("uploadForm");
+    const spinner = document.getElementById("spinner");
+    const submitBtn = document.getElementById("submitBtn");
+
+    form.addEventListener("submit", () => {
+      spinner.classList.remove("hidden");
+      submitBtn.disabled = true;
+    });
+  </script>
 </body>
 </html>

@@ -16,6 +16,7 @@ An AI-powered Node.js app using tRPC and Gemini 1.5 Flash to analyze a candidate
 - **Structured Output**: Analysis displayed as readable Markdown in browser.
 - **tRPC API**: Type-safe backend logic using `tRPC`.
 - **Clean UI**: Built with EJS + Tailwind CSS.
+- **Rate Limited**: Limits users to send 20 requests per minute.
 - **Secure File Handling**: Uploaded files are deleted after processing.
 
 ---
@@ -25,7 +26,7 @@ An AI-powered Node.js app using tRPC and Gemini 1.5 Flash to analyze a candidate
 ### Backend
 - **Node.js**, **Express.js**, **TypeScript**
 - **tRPC**, **Zod**, **dotenv**
-- **Multer** (for file uploads), **pdf-parse** (for PDF text extraction)
+- **Multer** (for file uploads), **pdf-parse** (for PDF text extraction), **express-rate-limit** (for api rate limits)
 - **axios** (for Gemini API calls)
 
 ### Frontend (Templating)
@@ -169,9 +170,7 @@ declare module 'pdf-parse' {
 ## 📌 Future Improvements
 
 - Better UI error display
-- Loading spinner during analysis
 - File validation (type, size)
-- API rate-limit handling
 - Enhanced UI/UX with React/Vue
 - PDF previews
 - Downloadable reports
